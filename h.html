@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Elapsed Since March 22, 2024</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Background and Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: white;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Glassmorphism Timer Box */
+        .timer-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+            font-weight: bold;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Digital Clock Style */
+        #timer {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        /* Subtle Animation */
+        .timer-box:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Time Elapsed Since March 22, 2024, 1:44 PM IST</h1>
+
+    <div class="timer-box">
+        <div id="timer">Loading...</div>
+    </div>
+
+    <script>
+        function updateTimer() {
+            const startTime = new Date('2024-03-22T13:44:00+05:30'); // Start time in IST
+            const now = new Date();
+
+            // Convert difference into seconds
+            let diff = Math.floor((now - startTime) / 1000);
+
+            let years = Math.floor(diff / (365 * 24 * 60 * 60));
+            let remainingDays = Math.floor(diff / (24 * 60 * 60)) % 365;
+            let months = Math.floor(remainingDays / 30);
+            let days = remainingDays % 30;
+            let hours = Math.floor(diff / 3600) % 24;
+            let minutes = Math.floor(diff / 60) % 60;
+            let seconds = diff % 60;
+
+            document.getElementById('timer').innerHTML = `
+                <span>${years} Years</span> | 
+                <span>${months} Months</span> | 
+                <span>${days} Days</span> <br> 
+                <span>${hours} Hrs</span> | 
+                <span>${minutes} Mins</span> | 
+                <span>${seconds} Secs</span>
+            `;
+        }
+
+        setInterval(updateTimer, 1000); // Update every second
+        updateTimer();
+    </script>
+
+</body>
+</html>
