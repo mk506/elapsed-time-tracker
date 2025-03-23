@@ -7,7 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-        /* Background and Styling */
+        /* Background Styling */
         body {
             font-family: 'Poppins', sans-serif;
             text-align: center;
@@ -36,17 +36,17 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             font-size: 24px;
             font-weight: bold;
-            width: 80%;
-            max-width: 400px;
+            width: 90%;
+            max-width: 500px;
             text-align: center;
             margin-top: 20px;
             color: #fff;
             transition: transform 0.3s ease-in-out;
         }
 
-        /* Digital Clock Style */
+        /* Timer Text */
         #timer {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
             margin-top: 10px;
             line-height: 1.5;
@@ -71,7 +71,7 @@
             const startTime = new Date('2024-03-22T13:44:00+05:30'); // Start time in IST
             const now = new Date();
 
-            // Convert difference into seconds
+            // Calculate difference in seconds
             let diff = Math.floor((now - startTime) / 1000);
 
             let years = Math.floor(diff / (365 * 24 * 60 * 60));
@@ -82,13 +82,24 @@
             let minutes = Math.floor(diff / 60) % 60;
             let seconds = diff % 60;
 
+            // Additional Time Units
+            let totalDays = Math.floor(diff / (24 * 60 * 60));
+            let totalHours = Math.floor(diff / 3600);
+            let totalMinutes = Math.floor(diff / 60);
+            let totalSeconds = diff;
+
             document.getElementById('timer').innerHTML = `
                 <span>${years} Years</span> | 
                 <span>${months} Months</span> | 
                 <span>${days} Days</span> <br> 
                 <span>${hours} Hrs</span> | 
                 <span>${minutes} Mins</span> | 
-                <span>${seconds} Secs</span>
+                <span>${seconds} Secs</span> <br><br>
+                <strong>Total:</strong> <br>
+                <span>${totalDays} Days</span> | 
+                <span>${totalHours} Hours</span> | 
+                <span>${totalMinutes} Minutes</span> | 
+                <span>${totalSeconds} Seconds</span>
             `;
         }
 
